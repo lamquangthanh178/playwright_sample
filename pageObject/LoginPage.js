@@ -37,7 +37,5 @@ class LoginPage extends BasePage {
         const element = this.getElement(this.lb_errorInvalidEmailFormat);
         return await element.isVisible(); 
     }
-
-
 }
 export default LoginPage;

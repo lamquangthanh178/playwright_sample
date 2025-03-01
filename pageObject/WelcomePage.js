@@ -8,14 +8,14 @@ class WelcomePage extends BasePage {
     }
 
     async waitForPageLoad() {
-        await this.page.waitForLoadState('domcontentloaded'); // ✅ Ensures DOM is loaded
-        await this.page.waitForSelector(this.btn_getStarted.xpath, { state: 'visible' }); // ✅ Ensures button is visible
+        await this.page.waitForLoadState('domcontentloaded'); 
+        await this.page.waitForSelector(this.btn_getStarted.xpath, { state: 'visible' }); 
     }
 
     async verifyButtonGetStartedVisible() {
-        await this.waitForPageLoad(); // ✅ Ensures page is fully loaded
+        await this.waitForPageLoad(); 
         const element = this.getElement(this.btn_getStarted);
-        return await element.isVisible(); // Returns true if visible, false if not
+        return await element.isVisible(); 
     }
 
     async clickLogoutButton() {

@@ -44,7 +44,5 @@ class SignUpPage extends BasePage {
     async verifyPasswordValidationMessage(expectedResult) {
         await this.verifyElementContainsText(this.passwordValidationMessage, expectedResult);
     }
-
-
 }
 export default SignUpPage;
