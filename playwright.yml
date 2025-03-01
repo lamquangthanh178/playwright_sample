@@ -1,0 +1,48 @@
+name: Playwright Tests
+
+on:
+  push:
+    branches:
+      - main 
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
+
+      - name: Run Playwright tests with Allure reporting
+        run: npm run allure:run
+
+      - name: Upload Allure report
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: allure-report
+          path: allure-report/  
+
+  notify:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send notification to Slack
+        if: always()
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }} #Example we have Slack channel and have a webhook url
+        run: |
+          curl -X POST -H 'Content-type: application/json' --data '{
+            "text": "Playwright Test Run Completed - Check results here: https://github.com/lamquangthanh178/actions"
+          }' $SLACK_WEBHOOK_URL
