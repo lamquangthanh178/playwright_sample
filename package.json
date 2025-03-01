@@ -1,0 +1,22 @@
+{
+  "name": "playwright_sample",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+ "scripts": {
+  "test": "npx playwright test",
+  "allure:clear": "rm -rf allure-results allure-report", 
+  "allure:generate": "npx allure generate allure-results --clean",
+  "allure:open": "npx allure open allure-report",
+  "allure:run": "npm run allure:clear && npm run test && npm run allure:generate && npm run allure:open"
+},
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@faker-js/faker": "^9.5.1",
+    "@playwright/test": "^1.50.1",
+    "allure-playwright": "^3.2.0",
+    "playwright": "^1.50.1"
+  }
+}

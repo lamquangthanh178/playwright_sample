@@ -1,0 +1,8 @@
+{
+    "password":"P@ssword2025",
+    "blankFullnameValidationMessage":"Full name is required",
+    "blankEmailValidationMessage":"Email is required",
+    "blankPasswordValidationMessage":"Password is required",
+    "invalidEmailFormatMessage":"Email is invalid",
+    "invalidEmailFormat":"lamquangthanh@yopmail"
+}
